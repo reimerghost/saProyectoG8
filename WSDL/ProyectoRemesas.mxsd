@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.usac.edu.gt/sa/remesas" xmlns:esb="http://www.usac.edu.gt/sa/remesas" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="RemesasReq_t">
+    <xsd:sequence>
+      <xsd:element name="infoTrx" type="esb:infoTrx"/>
+      <xsd:element name="Datos" type="esb:Datos_RemesasReq"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RemesasResp_t">
+    <xsd:sequence>
+      <xsd:element name="infoTrx" type="esb:infoTrx"/>
+      <xsd:element name="Datos" type="esb:Datos_RemesasResp"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="infoTrx">
+    <xsd:sequence>
+      <xsd:element name="idTrx" type="xsd:string"/>
+      <xsd:element name="codigoBanco" type="xsd:string"/>
+      <xsd:element name="codigoRemesador" type="xsd:string"/>
+      <xsd:element name="horaTrx" type="xsd:string"/>
+      <xsd:element name="fechaTrx" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Datos_RemesasReq">
+    <xsd:sequence>
+      <xsd:element name="idRemesa" type="xsd:string"/>
+      <xsd:element name="detalleRemesa" type="esb:detalleRemesa"/>
+      <xsd:element name="detalleBeneficiario" type="esb:detalleBeneficiario"/>
+      <xsd:element name="detalleEmisor" type="esb:detalleEmisor"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Datos_RemesasResp">
+    <xsd:sequence>
+      <xsd:element name="idRemesa" type="xsd:string"/>
+      <xsd:element name="codigoRespuesta" type="xsd:string"/>
+      <xsd:element name="descripcionRespuesta" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="detalleRemesa">
+    <xsd:sequence>
+      <xsd:element name="tipoRemesa" type="xsd:string"/>
+      <xsd:element name="montoLocalRemesa" type="xsd:string"/>
+      <xsd:element minOccurs="1" name="montoDolaresRemesa" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="numeroCta" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="numeroPrestamo" type="xsd:string"/>
+      <xsd:element name="montoComision" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="detalleBeneficiario">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="nombreRemitente" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="apellidoRemitente" type="xsd:string"/>
+      <xsd:element name="idRemitente" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="paisRemitente" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="detalleEmisor">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="nombreEmisor" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="apellidoEmisor" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="idEmisor" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="paisEmisor" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RemesasPVReq" type="esb:RemesasReq_t">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/RemesasPVReq;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="RemesasPVResp" type="esb:RemesasResp_t">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/RemesasPVResp;XSDElementDeclaration=1$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Header" type="esb:Header">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/Header;XSDElementDeclaration=2$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Header">
+    <xsd:sequence>
+      <xsd:element name="Service" type="xsd:string"/>
+      <xsd:element name="Operation" type="xsd:string"/>
+      <xsd:element name="Version" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RemesasACReq" type="esb:RemesasReq_t">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/RemesasACReq;XSDElementDeclaration=3$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="RemesasACResp" type="esb:RemesasResp_t">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/RemesasACResp;XSDElementDeclaration=4$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="RemesasPPReq" type="esb:RemesasReq_t">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/RemesasPPReq;XSDElementDeclaration=5$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="RemesasPPResp" type="esb:RemesasResp_t">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/RemesasPPResp;XSDElementDeclaration=6$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

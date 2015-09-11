@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="SA_Proyecto_Remesas" targetNamespace="http://www.usac.edu.gt/sa/remesas" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.usac.edu.gt/sa/remesas" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="SA_ProyectoMSSOAP_HTTP_Binding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.usac.edu.gt/sa/remesas" xmlns:mrm="http://www.usac.edu.gt/sa/remesas">
+      <xsd:include schemaLocation="ProyectoRemesas_WSDLGenWrapper.mxsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="EnvioRemesas_in">
+    <wsdl:part element="tns:RemesasReq" name="RemesasReq"/>
+  </wsdl:message>
+  <wsdl:message name="EnvioRemesas_out">
+    <wsdl:part element="tns:RemesasResp" name="RemesasResp"/>
+  </wsdl:message>
+  <wsdl:portType name="SA_ProyectoMSPortType">
+    <wsdl:operation name="EnvioRemesas">
+      <wsdl:input message="tns:EnvioRemesas_in" name="EnvioRemesas_Input"/>
+      <wsdl:output message="tns:EnvioRemesas_out" name="EnvioRemesas_Output"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SA_ProyectoMSSOAP_HTTP_Binding"
+  	type="tns:SA_ProyectoMSPortType">
+
+  	<soap12:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="EnvioRemesas">
+
+  		<soap12:operation
+  			soapAction="http://www.usac.edu.gt/sa/remesas/EnvioRemesas" />
+  		<wsdl:input name="EnvioRemesas_Input">
+
+  			<soap12:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output name="EnvioRemesas_Output">
+
+  			<soap12:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SA_ProyectoMSSOAP_HTTP_Service">
+    <wsdl:port binding="tns:SA_ProyectoMSSOAP_HTTP_Binding" name="SA_ProyectoMSSOAP_HTTP_Port">
+            <soap12:address location="http://localhost:7800/SA_ProyectoMSSOAP_HTTP_Service"/>
+        </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="SA_Proyecto_Remesasv2.0" targetNamespace="http://www.usac.edu.gt/sa/remesas" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.usac.edu.gt/sa/remesas" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="SA_ProyectoMSSOAP_HTTP_Binding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.usac.edu.gt/sa/remesas" xmlns:mrm="http://www.usac.edu.gt/sa/remesas">
+      <xsd:include schemaLocation="ProyectoRemesas_WSDLGenWrapper.mxsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PagoVentanilla_in">
+    <wsdl:part element="tns:RemesasPVReq" name="RemesasPVReq"/>
+    <wsdl:part element="tns:Header" name="Header"/>
+  </wsdl:message>
+  <wsdl:message name="PagoVentanilla_out">
+    <wsdl:part element="tns:RemesasPVResp" name="RemesasPVResp"/>
+    <wsdl:part element="tns:Header" name="Header"/>
+  </wsdl:message>
+  <wsdl:message name="PagoPrestamo_in">
+    <wsdl:part element="tns:RemesasPPReq" name="RemesasPPReq"/>
+    <wsdl:part element="tns:Header" name="Header"/>
+  </wsdl:message>
+  <wsdl:message name="PagoPrestamo_out">
+    <wsdl:part element="tns:RemesasPPResp" name="RemesasPPResp"/>
+    <wsdl:part element="tns:Header" name="Header"/>
+  </wsdl:message>
+  <wsdl:message name="AbonoCuenta_in">
+    <wsdl:part element="tns:RemesasACReq" name="RemesasACReq"/>
+    <wsdl:part element="tns:Header" name="Header"/>
+  </wsdl:message>
+  <wsdl:message name="AbonoCuenta_out">
+    <wsdl:part element="tns:RemesasACResp" name="RemesasACResp"/>
+    <wsdl:part element="tns:Header" name="Header"/>
+  </wsdl:message>
+  <wsdl:portType name="SA_ProyectoMSPortType">
+    <wsdl:operation name="PagoVentanilla">
+      <wsdl:input message="tns:PagoVentanilla_in" name="PagoVentanilla_Input"/>
+      <wsdl:output message="tns:PagoVentanilla_out" name="PagoVentanilla_Output"/>
+    </wsdl:operation>
+    <wsdl:operation name="PagoPrestamo">
+      <wsdl:input message="tns:PagoPrestamo_in" name="PagoPrestamo_Input"/>
+      <wsdl:output message="tns:PagoPrestamo_out" name="PagoPrestamo_Output"/>
+    </wsdl:operation>
+    <wsdl:operation name="AbonoCuenta">
+      <wsdl:input message="tns:AbonoCuenta_in" name="AbonoCuenta_Input"/>
+      <wsdl:output message="tns:AbonoCuenta_out" name="AbonoCuenta_Output"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SA_ProyectoMSSOAP_HTTP_Binding"
+  	type="tns:SA_ProyectoMSPortType">
+
+  	<soap12:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="PagoVentanilla">
+
+  		<soap12:operation
+  			soapAction="http://www.usac.edu.gt/sa/remesas/PagoVentanilla" />
+  		<wsdl:input name="PagoVentanilla_Input">
+
+
+  			<soap12:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output name="PagoVentanilla_Output">
+
+
+  			<soap12:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="PagoPrestamo">
+
+  		<soap12:operation
+  			soapAction="http://www.usac.edu.gt/sa/remesas/PagoPrestamo" />
+  		<wsdl:input name="PagoPrestamo_Input">
+
+
+  			<soap12:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output name="PagoPrestamo_Output">
+
+
+  			<soap12:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="AbonoCuenta">
+
+  		<soap12:operation
+  			soapAction="http://www.usac.edu.gt/sa/remesas/AbonoCuenta" />
+  		<wsdl:input name="AbonoCuenta_Input">
+
+
+  			<soap12:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output name="AbonoCuenta_Output">
+
+
+  			<soap12:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SA_ProyectoMSSOAP_HTTP_Service">
+    <wsdl:port binding="tns:SA_ProyectoMSSOAP_HTTP_Binding" name="SA_ProyectoMSSOAP_HTTP_Port">
+            <soap12:address location="http://localhost:7800/SA_ProyectoMSSOAP_HTTP_Service"/>
+        </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
