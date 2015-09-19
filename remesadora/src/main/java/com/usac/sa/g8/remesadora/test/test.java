@@ -12,9 +12,10 @@ import java.sql.SQLException;
  * @author Reimer
  */
 public class test {
+    
 
     public static void main(String[] argv) {
         testClass c = new testClass();
-        System.out.println(c.nuevaCuenta(2, "testing2"));
+        System.out.println(c.nuevaCuenta("Activo"));
     }
 }

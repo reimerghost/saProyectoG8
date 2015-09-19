@@ -19,7 +19,7 @@ public class bddConnection {
     private static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
-    private static final String dbName = "test";
+    private static final String dbName = "remesadoraG8";
 
     public static Connection getDBConnection() {
         Connection dbConnection = null;

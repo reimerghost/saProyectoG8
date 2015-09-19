@@ -20,21 +20,20 @@ public class testClass {
     
     
     
-    public boolean nuevaCuenta(int id, String cadena) {
+    public boolean nuevaCuenta(String cadena) {
         boolean resp = false;
         Connection dbConnection = null;
         PreparedStatement preparedStatement = null;
 
-        String insertCliente = "insert into example(id,data)"
-                + "values( ? , ? )";
+        String insertCliente = "insert into estado(nombre)"
+                + "values( ? )";
 
         try {
             dbConnection = bddConnection.getDBConnection();
             preparedStatement = dbConnection.prepareStatement(insertCliente);
             //preparedStatement = dbConnection.prepareStatement(updateTableSQL);
 
-            preparedStatement.setInt(1, id);
-            preparedStatement.setString(2, cadena);
+            preparedStatement.setString(1, cadena);
 
             preparedStatement.executeUpdate();
             //id = this.getID(usuario,password);
