@@ -1,30 +1,25 @@
 create database remesadoraG8;
 create database bancoG8;
 use remesadoraG8;
-
-
+--TIPO DE REMESA
 create table tipo_remesa
 (id_tipo int primary key,
 nombre varchar(20));
-
-
-
+--CLIENTE
 create table cliente
-( id_cliente int(5) auto_increment primary key,
+( id_cliente int primary key,
 nombre varchar(20),
 apellido varchar(20),
 dpi varchar(13)
 );
-
-
+--ESTADO
 create table estado
 ( id_estado int primary key,
 nombre varchar(20)
 );
-
-
+--REMESA
 create table remesa
-( id_remesa int auto_increment primary key,
+( id_remesa int primary key,
 nombre_emisor varchar(20),
 apellido_receptor varchar(20),
 fecha_agregado Datetime,
@@ -33,8 +28,7 @@ FOREIGN KEY (id_receptor)
       REFERENCES cliente(id_cliente)
       ON UPDATE CASCADE ON DELETE RESTRICT
 );
-
-
+--HISTORIAL DE REMESA
 create table historial
 (
 id_remesa int not null,
