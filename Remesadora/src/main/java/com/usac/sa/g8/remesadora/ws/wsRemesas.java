@@ -22,5 +22,6 @@ public class wsRemesas {
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
+        
     }
 }
