@@ -1,4 +1,3 @@
-drop database remesadoraG8;
 create database remesadoraG8;
 use remesadoraG8;
 

@@ -19,9 +19,20 @@ public class wsRemesas {
     /**
      * This is a sample web service operation
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-        
+    @WebMethod(operationName = "enviarRemesaACuenta")
+    public String enviarRemesaACuenta(@WebParam(name = "name") String txt) {
+        return "Hello " + "" + " !";        
+    }
+    @WebMethod(operationName = "enviarRemesaAPrestamo")
+    public String enviarRemesaAPrestamo(@WebParam(name = "name") String txt) {
+        return "Hello " + "" + " !";        
+    }
+    @WebMethod(operationName = "enviarRemesaEfectivo")
+    public String enviarRemesaEfectivo(@WebParam(name = "no_remesa") String no_remesa,@WebParam(name = "no_remesadora") String no_remesadora) {
+        return "Hello " + "" + " !";        
+    }
+    @WebMethod(operationName = "cambiarEstado")
+    public String cambiarEstado(@WebParam(name = "no_remesa") int no_remesa,@WebParam(name = "monto") int monto) {
+        return "Hello " + "" + " !";        
     }
 }
