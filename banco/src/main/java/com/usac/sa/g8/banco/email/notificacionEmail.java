@@ -45,9 +45,9 @@ public class notificacionEmail {
         switch (tipo) {
             case 1:
                 body = "<h1>Se ha acreditado a tu cuenta una nueva remesa</h1><br/>"
-                        + "Estimado Sr(a). XXX, <br/>"
-                        + "Informamos que a su cuenta No XXX, ha sido acreditada una remesa con un valor"
-                        + " de XXX."
+                        + "Estimado Sr(a). Cliente, <br/>"
+                        + "Informamos que a su cuenta No "+getCodBanco()+", ha sido acreditada una remesa con un valor"
+                        + " de Q."+getMonto()+"."
                         + "<br/><br/>"
                         + "Gracias por su preferencia";
                 return body;
@@ -56,7 +56,7 @@ public class notificacionEmail {
                         + "Estimado Sr(a). XXX, <br/>"
                         + "Informamos que a su Prestamo No XXX, ha sido abonado por medio de una remesa, con el valor"
                         + " de XXX. </br>"
-                        + "Su saldo pendiente de prestamo es de XXX."
+                        + "Su actual saldo pendiente de prestamo es de: XXX."
                         + "<br/><br/>"
                         + "Gracias por su preferencia";
                 return body;
@@ -94,5 +94,13 @@ public class notificacionEmail {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String getCodBanco() {
+        return "08001";
+    }
+
+    private String getMonto() {
+        return "555";
     }
 }

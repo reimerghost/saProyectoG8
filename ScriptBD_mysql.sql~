@@ -10,7 +10,11 @@ nombre varchar(20));
 
 
 create table cliente
+<<<<<<< HEAD
 ( id_cliente int primary key,
+=======
+( id_cliente int(5) auto_increment primary key,
+>>>>>>> 431c3c2c779c472006ad409c02f248a50810af04
 nombre varchar(20),
 apellido varchar(20),
 dpi varchar(13)
@@ -24,7 +28,11 @@ nombre varchar(20)
 
 
 create table remesa
+<<<<<<< HEAD
 ( id_remesa int primary key,
+=======
+( id_remesa int auto_increment primary key,
+>>>>>>> 431c3c2c779c472006ad409c02f248a50810af04
 nombre_emisor varchar(20),
 apellido_receptor varchar(20),
 fecha_agregado Datetime,
@@ -63,6 +71,14 @@ create table tipo_cuenta
 nombre varchar(25)
 );
 
+<<<<<<< HEAD
+=======
+create table tipo_transaccion
+( id_tipo_trans int primary key,
+nombre varchar(25)
+);
+
+>>>>>>> 431c3c2c779c472006ad409c02f248a50810af04
 create table cuenta
 ( id_cuenta int primary key,
 fecha_creada Datetime,
@@ -76,7 +92,22 @@ FOREIGN KEY (id_tipo_cuenta)
       ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
+<<<<<<< HEAD
 
 
+=======
+create table transaccion
+( id_transaccion int primary key,
+fecha Datetime,
+id_cuenta int not null,
+id_tipo_trans int not null,
+FOREIGN KEY (id_cuenta)
+      REFERENCES cuenta(id_cuenta)
+      ON UPDATE CASCADE ON DELETE RESTRICT,
+FOREIGN KEY (id_tipo_trans)
+      REFERENCES tipo_transaccion(id_tipo_trans)
+      ON UPDATE CASCADE ON DELETE RESTRICT
+);
+>>>>>>> 431c3c2c779c472006ad409c02f248a50810af04
 
 
