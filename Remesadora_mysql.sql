@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `remesadorag8`.`remesa` (
   `tipo_remesa` VARCHAR(50) NULL DEFAULT NULL,
   `monto` DECIMAL(20,2) NOT NULL,
   `id_cuenta` INT(11) NOT NULL,
-  `banco_destino` VARCHAR(50) NOT NULL DEFAULT NULL,
+  `banco_destino` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id_remesa`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
