@@ -18,6 +18,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema bancog8
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `bancog8` DEFAULT CHARACTER SET latin1 ;
+ 
 USE `bancog8` ;
 
 -- -----------------------------------------------------
@@ -25,7 +26,6 @@ USE `bancog8` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bancog8`.`prestamo` (
   `id_prestamo` INT(11) NOT NULL AUTO_INCREMENT,
-  `fecha_creada` VARCHAR(50) NULL DEFAULT NULL,
   `nombre` VARCHAR(20) NULL DEFAULT NULL,
   `apellido` VARCHAR(20) NULL DEFAULT NULL,
   `email` VARCHAR(50) NULL DEFAULT NULL,
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `bancog8`.`abonos` (
   `montoQ` DECIMAL(10,2) NULL DEFAULT NULL,
   `montoD` DECIMAL(10,2) NULL DEFAULT NULL,
   `id_prestamo` INT(11) NOT NULL,
+  `id_remesadora` INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_abono`),
   INDEX `id_prestamo` (`id_prestamo` ASC),
   CONSTRAINT `abonos_ibfk_1`
@@ -60,7 +61,6 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bancog8`.`cuenta` (
   `id_cuenta` INT(11) NOT NULL AUTO_INCREMENT,
-  `fecha_creada` VARCHAR(50) NULL DEFAULT NULL,
   `nombre` VARCHAR(20) NULL DEFAULT NULL,
   `apellido` VARCHAR(20) NULL DEFAULT NULL,
   `email` VARCHAR(50) NULL DEFAULT NULL,
@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `bancog8`.`transaccion` (
   `fecha` VARCHAR(50) NULL DEFAULT NULL,
   `montoQ` DECIMAL(10,2) NULL DEFAULT NULL,
   `montoD` DECIMAL(10,2) NULL DEFAULT NULL,
+  `id_remesadora` INT(11) NOT NULL DEFAULT '0',
   `id_cuenta` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id_transaccion`),
   INDEX `id_cuenta` (`id_cuenta` ASC),
