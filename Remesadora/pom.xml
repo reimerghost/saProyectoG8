@@ -19,6 +19,7 @@
             <groupId>org.glassfish.metro</groupId>
             <artifactId>webservices-rt</artifactId>
             <version>2.3</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -101,13 +102,14 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>10.50.59.87_9763/services/ws_data_remesadoraG8.wsdl</wsdlFile>
+                                <wsdlFile>localhost_9763/services/remesadorag8.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
-                            <wsdlLocation>http://10.50.59.87:9763/services/ws_data_remesadoraG8?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/ws_data_remesadoraG8.stale</staleFile>
+                            <wsdlLocation>http://localhost:9763/services/remesadoraG8?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/remesadorag8.stale</staleFile>
+                            <target>2.0</target>
                         </configuration>
-                        <id>wsimport-generate-ws_data_remesadoraG8</id>
+                        <id>wsimport-generate-remesadorag8</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

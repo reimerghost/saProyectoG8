@@ -1,0 +1,299 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://ws.wso2.org/dataservice" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="remesadoraG8" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="remesadoraG8">
+    <wsdl:documentation></wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="remesadoraG8">
+            <xs:element name="insert_remesa_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nombre_emisor" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="nombre_receptor" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="fecha_agregado" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="fecha_pago" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="tipo_remesa" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="id_cuenta" nillable="true" type="xs:int"></xs:element>
+                        <xs:element name="id_prestamo" nillable="true" type="xs:int"></xs:element>
+                        <xs:element name="banco_destino" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="estado" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="monto_dolares" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="monto_quetzales" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="comision" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="id_remesadora" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="select_all_remesa_operation">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="remesaCollection" type="ns0:remesaCollection"></xs:element>
+            <xs:complexType name="remesaCollection">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="remesa" type="ns0:remesa"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="remesa">
+                <xs:sequence>
+                    <xs:element name="id_remesa" nillable="true" type="xs:integer"></xs:element>
+                    <xs:element name="nombre_emisor" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="nombre_receptor" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="fecha_agregado" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="fecha_pago" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="tipo_remesa" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="id_cuenta" nillable="true" type="xs:integer"></xs:element>
+                    <xs:element name="id_prestamo" nillable="true" type="xs:integer"></xs:element>
+                    <xs:element name="banco_destino" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="estado" nillable="true" type="xs:string"></xs:element>
+                    <xs:element name="monto_dolares" nillable="true" type="xs:decimal"></xs:element>
+                    <xs:element name="monto_quetzales" nillable="true" type="xs:decimal"></xs:element>
+                    <xs:element name="comision" nillable="true" type="xs:decimal"></xs:element>
+                    <xs:element name="id_remesadora" nillable="true" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="select_with_key_remesa_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id_remesa" nillable="true" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="update_remesa_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nombre_emisor" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="nombre_receptor" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="fecha_agregado" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="fecha_pago" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="tipo_remesa" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="id_cuenta" nillable="true" type="xs:int"></xs:element>
+                        <xs:element name="id_prestamo" nillable="true" type="xs:int"></xs:element>
+                        <xs:element name="banco_destino" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="estado" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="monto_dolares" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="monto_quetzales" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="comision" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="id_remesadora" nillable="true" type="xs:string"></xs:element>
+                        <xs:element name="id_remesa" nillable="true" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="delete_remesa_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id_remesa" nillable="true" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+            <xs:element name="DataServiceFault" type="xs:string"></xs:element>
+            <xs:element name="REQUEST_STATUS" type="xs:string"></xs:element>
+            <xs:element name="DATA_SERVICE_RESPONSE">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:any minOccurs="0"></xs:any>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="update_remesa_operationRequest">
+        <wsdl:part name="parameters" element="ns0:update_remesa_operation"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="select_all_remesa_operationRequest">
+        <wsdl:part name="parameters" element="ns0:select_all_remesa_operation"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="select_all_remesa_operationResponse">
+        <wsdl:part name="parameters" element="ns0:remesaCollection"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DataServiceFault">
+        <wsdl:part name="parameters" element="ns1:DataServiceFault"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="select_with_key_remesa_operationRequest">
+        <wsdl:part name="parameters" element="ns0:select_with_key_remesa_operation"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="select_with_key_remesa_operationResponse">
+        <wsdl:part name="parameters" element="ns0:remesaCollection"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="insert_remesa_operationRequest">
+        <wsdl:part name="parameters" element="ns0:insert_remesa_operation"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="delete_remesa_operationRequest">
+        <wsdl:part name="parameters" element="ns0:delete_remesa_operation"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="remesadoraG8PortType">
+        <wsdl:operation name="update_remesa_operation">
+            <wsdl:documentation></wsdl:documentation>
+            <wsdl:input message="ns0:update_remesa_operationRequest" wsaw:Action="urn:update_remesa_operation"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="select_all_remesa_operation">
+            <wsdl:documentation></wsdl:documentation>
+            <wsdl:input message="ns0:select_all_remesa_operationRequest" wsaw:Action="urn:select_all_remesa_operation"></wsdl:input>
+            <wsdl:output message="ns0:select_all_remesa_operationResponse" wsaw:Action="urn:select_all_remesa_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_remesa_operationDataServiceFault"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="select_with_key_remesa_operation">
+            <wsdl:documentation></wsdl:documentation>
+            <wsdl:input message="ns0:select_with_key_remesa_operationRequest" wsaw:Action="urn:select_with_key_remesa_operation"></wsdl:input>
+            <wsdl:output message="ns0:select_with_key_remesa_operationResponse" wsaw:Action="urn:select_with_key_remesa_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_remesa_operationDataServiceFault"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="insert_remesa_operation">
+            <wsdl:documentation></wsdl:documentation>
+            <wsdl:input message="ns0:insert_remesa_operationRequest" wsaw:Action="urn:insert_remesa_operation"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="delete_remesa_operation">
+            <wsdl:documentation></wsdl:documentation>
+            <wsdl:input message="ns0:delete_remesa_operationRequest" wsaw:Action="urn:delete_remesa_operation"></wsdl:input>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="remesadoraG8SOAP11Binding" type="ns0:remesadoraG8PortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <wsdl:operation name="update_remesa_operation">
+            <soap:operation soapAction="urn:update_remesa_operation" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="select_all_remesa_operation">
+            <soap:operation soapAction="urn:select_all_remesa_operation" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="select_with_key_remesa_operation">
+            <soap:operation soapAction="urn:select_with_key_remesa_operation" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="insert_remesa_operation">
+            <soap:operation soapAction="urn:insert_remesa_operation" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="delete_remesa_operation">
+            <soap:operation soapAction="urn:delete_remesa_operation" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="remesadoraG8SOAP12Binding" type="ns0:remesadoraG8PortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap12:binding>
+        <wsdl:operation name="update_remesa_operation">
+            <soap12:operation soapAction="urn:update_remesa_operation" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="select_all_remesa_operation">
+            <soap12:operation soapAction="urn:select_all_remesa_operation" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="select_with_key_remesa_operation">
+            <soap12:operation soapAction="urn:select_with_key_remesa_operation" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="insert_remesa_operation">
+            <soap12:operation soapAction="urn:insert_remesa_operation" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="delete_remesa_operation">
+            <soap12:operation soapAction="urn:delete_remesa_operation" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="remesadoraG8HttpBinding" type="ns0:remesadoraG8PortType">
+        <http:binding verb="POST"></http:binding>
+        <wsdl:operation name="update_remesa_operation">
+            <http:operation location="update_remesa_operation"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="select_all_remesa_operation">
+            <http:operation location="select_all_remesa_operation"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="select_with_key_remesa_operation">
+            <http:operation location="select_with_key_remesa_operation"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="insert_remesa_operation">
+            <http:operation location="insert_remesa_operation"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="delete_remesa_operation">
+            <http:operation location="delete_remesa_operation"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="remesadoraG8">
+        <wsdl:port name="SOAP11Endpoint" binding="ns0:remesadoraG8SOAP11Binding">
+            <soap:address location="http://192.168.1.5:9763/services/remesadoraG8.SOAP11Endpoint/"></soap:address>
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP11Endpoint" binding="ns0:remesadoraG8SOAP11Binding">
+            <soap:address location="https://192.168.1.5:9443/services/remesadoraG8.SecureSOAP11Endpoint/"></soap:address>
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP12Endpoint" binding="ns0:remesadoraG8SOAP12Binding">
+            <soap12:address location="https://192.168.1.5:9443/services/remesadoraG8.SecureSOAP12Endpoint/"></soap12:address>
+        </wsdl:port>
+        <wsdl:port name="SOAP12Endpoint" binding="ns0:remesadoraG8SOAP12Binding">
+            <soap12:address location="http://192.168.1.5:9763/services/remesadoraG8.SOAP12Endpoint/"></soap12:address>
+        </wsdl:port>
+        <wsdl:port name="HTTPEndpoint" binding="ns0:remesadoraG8HttpBinding">
+            <http:address location="http://192.168.1.5:9763/services/remesadoraG8.HTTPEndpoint/"></http:address>
+        </wsdl:port>
+        <wsdl:port name="SecureHTTPEndpoint" binding="ns0:remesadoraG8HttpBinding">
+            <http:address location="https://192.168.1.5:9443/services/remesadoraG8.SecureHTTPEndpoint/"></http:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
