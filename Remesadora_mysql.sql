@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `remesadorag8`.`remesa` (
   `fecha_pago` VARCHAR(50) NULL DEFAULT NULL,
   `tipo_remesa` VARCHAR(50) NULL DEFAULT NULL,
   `id_cuenta` INT(11) NULL DEFAULT NULL,
-  `id_prestamo` INT(11) NULL DEFAULT NULL 
+  `id_prestamo` INT(11) NULL DEFAULT NULL, 
   `banco_destino` VARCHAR(50) NOT NULL,
   `estado` VARCHAR(25) NOT NULL,
   `monto_dolares` DECIMAL(20,2) NOT NULL,
