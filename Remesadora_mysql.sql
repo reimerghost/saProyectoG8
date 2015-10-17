@@ -28,32 +28,22 @@ CREATE TABLE IF NOT EXISTS `remesadorag8`.`remesa` (
   `nombre_emisor` VARCHAR(50) NULL DEFAULT NULL,
   `nombre_receptor` VARCHAR(50) NULL DEFAULT NULL,
   `fecha_agregado` VARCHAR(50) NULL DEFAULT NULL,
+  `fecha_pago` VARCHAR(50) NULL DEFAULT NULL,
   `tipo_remesa` VARCHAR(50) NULL DEFAULT NULL,
-  `monto` DECIMAL(20,2) NOT NULL,
-  `id_cuenta` INT(11) NOT NULL,
+  `id_cuenta` INT(11) NULL DEFAULT NULL,
+  `id_prestamo` INT(11) NULL DEFAULT NULL 
   `banco_destino` VARCHAR(50) NOT NULL,
   `estado` VARCHAR(25) NOT NULL,
+  `monto_dolares` DECIMAL(20,2) NOT NULL,
+  `monto_quetzales` DECIMAL(20,2) NOT NULL,
+  `comision` DECIMAL(20,2) NOT NULL,
+  `id_remesadora` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id_remesa`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
--- -----------------------------------------------------
--- Table `remesadorag8`.`historial`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `remesadorag8`.`historial` (
-  `id_historial` INT(11) NOT NULL AUTO_INCREMENT,
-  `id_remesa` INT(11) NOT NULL,
-  `estado` VARCHAR(50) NOT NULL,
-  `fecha` VARCHAR(50) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_historial`),
-  INDEX `id_remesa` (`id_remesa` ASC),
-  CONSTRAINT `historial_ibfk_1`
-    FOREIGN KEY (`id_remesa`)
-    REFERENCES `remesadorag8`.`remesa` (`id_remesa`)
-    ON UPDATE CASCADE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
