@@ -27,7 +27,26 @@ public class wsBanco {
             @WebParam(name = "nombre_envia") String nombre_envia,
             @WebParam(name = "nombre_recibe") String nombre_recibe,
             @WebParam(name = "montoDolar") float montoDolar) {
-        return "Hello " + "" + " !";
+        try { // Call Web Service Operation
+            org.wso2.ws.dataservice.Wsg8Banco service = new org.wso2.ws.dataservice.Wsg8Banco();
+            org.wso2.ws.dataservice.Wsg8BancoPortType port = service.getSOAP11Endpoint();
+            // TODO initialize WS operation arguments here
+            java.lang.Integer idRemesa = no_remesa;
+            java.lang.Integer idRemesadora = no_remesadora;
+            java.util.Date ahora = new java.util.Date();
+            java.lang.String fecha = ahora.toGMTString();
+            java.lang.String nombreEmisor = nombre_envia;
+            java.lang.String nombreReceptor = nombre_recibe;
+            java.lang.Double montoQ = montoDolar*7.75d;
+            java.lang.Double montoD = montoDolar*1.0d;
+            java.lang.String estado = "";
+            port.insertAbonosOperation(fecha, montoQ, montoD, no_prestamo);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+            return "false";
+        }
+
+        return "true";
     }
 
     @WebMethod(operationName = "recibirRemesaCuenta")
