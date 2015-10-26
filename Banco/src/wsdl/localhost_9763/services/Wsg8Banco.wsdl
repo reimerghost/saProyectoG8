@@ -1,4 +1,4 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.wso2.org/dataservice">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="Wsg8BancoDS" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="Wsg8BancoDS">
     <wsdl:documentation></wsdl:documentation>
     <wsdl:types>
         <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
@@ -11,6 +11,8 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="Wsg8BancoDS">
             <xs:element name="select_with_key_remesas_efectivo_operation">
                 <xs:complexType>
                     <xs:sequence>
@@ -18,10 +20,10 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="remesas_efectivoCollection" type="ns0:remesas_efectivoCollection"></xs:element>
+            <xs:element name="remesas_efectivoCollection" type="ns1:remesas_efectivoCollection"></xs:element>
             <xs:complexType name="remesas_efectivoCollection">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="remesas_efectivo" type="ns0:remesas_efectivo"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="remesas_efectivo" type="ns1:remesas_efectivo"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="remesas_efectivo">
@@ -43,6 +45,7 @@
                         <xs:element name="montoQ" nillable="true" type="xs:double"></xs:element>
                         <xs:element name="montoD" nillable="true" type="xs:double"></xs:element>
                         <xs:element name="id_prestamo" nillable="true" type="xs:int"></xs:element>
+                        <xs:element name="id_remesadora" nillable="true" type="xs:int"></xs:element>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -53,10 +56,10 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="transaccionCollection" type="ns0:transaccionCollection"></xs:element>
+            <xs:element name="transaccionCollection" type="ns1:transaccionCollection"></xs:element>
             <xs:complexType name="transaccionCollection">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="transaccion" type="ns0:transaccion"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="transaccion" type="ns1:transaccion"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="transaccion">
@@ -65,6 +68,7 @@
                     <xs:element name="fecha" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="montoQ" nillable="true" type="xs:decimal"></xs:element>
                     <xs:element name="montoD" nillable="true" type="xs:decimal"></xs:element>
+                    <xs:element name="id_remesadora" nillable="true" type="xs:integer"></xs:element>
                     <xs:element name="id_cuenta" nillable="true" type="xs:integer"></xs:element>
                 </xs:sequence>
             </xs:complexType>
@@ -88,16 +92,15 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="prestamoCollection" type="ns0:prestamoCollection"></xs:element>
+            <xs:element name="prestamoCollection" type="ns1:prestamoCollection"></xs:element>
             <xs:complexType name="prestamoCollection">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="prestamo" type="ns0:prestamo"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="prestamo" type="ns1:prestamo"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="prestamo">
                 <xs:sequence>
                     <xs:element name="id_prestamo" nillable="true" type="xs:integer"></xs:element>
-                    <xs:element name="fecha_creada" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="nombre" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="apellido" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="email" nillable="true" type="xs:string"></xs:element>
@@ -115,7 +118,6 @@
             <xs:element name="update_cuenta_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="fecha_creada" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="nombre" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="apellido" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="email" nillable="true" type="xs:string"></xs:element>
@@ -128,16 +130,15 @@
                     <xs:sequence></xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="cuentaCollection" type="ns0:cuentaCollection"></xs:element>
+            <xs:element name="cuentaCollection" type="ns1:cuentaCollection"></xs:element>
             <xs:complexType name="cuentaCollection">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="cuenta" type="ns0:cuenta"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="cuenta" type="ns1:cuenta"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="cuenta">
                 <xs:sequence>
                     <xs:element name="id_cuenta" nillable="true" type="xs:integer"></xs:element>
-                    <xs:element name="fecha_creada" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="nombre" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="apellido" nillable="true" type="xs:string"></xs:element>
                     <xs:element name="email" nillable="true" type="xs:string"></xs:element>
@@ -149,6 +150,7 @@
                         <xs:element name="fecha" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="montoQ" nillable="true" type="xs:double"></xs:element>
                         <xs:element name="montoD" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="id_remesadora" nillable="true" type="xs:int"></xs:element>
                         <xs:element name="id_cuenta" nillable="true" type="xs:int"></xs:element>
                         <xs:element name="id_transaccion" nillable="true" type="xs:int"></xs:element>
                     </xs:sequence>
@@ -178,7 +180,6 @@
             <xs:element name="insert_cuenta_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="fecha_creada" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="nombre" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="apellido" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="email" nillable="true" type="xs:string"></xs:element>
@@ -197,10 +198,10 @@
                     <xs:sequence></xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="abonosCollection" type="ns0:abonosCollection"></xs:element>
+            <xs:element name="abonosCollection" type="ns1:abonosCollection"></xs:element>
             <xs:complexType name="abonosCollection">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="abonos" type="ns0:abonos"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="abonos" type="ns1:abonos"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="abonos">
@@ -210,6 +211,7 @@
                     <xs:element name="montoQ" nillable="true" type="xs:decimal"></xs:element>
                     <xs:element name="montoD" nillable="true" type="xs:decimal"></xs:element>
                     <xs:element name="id_prestamo" nillable="true" type="xs:integer"></xs:element>
+                    <xs:element name="id_remesadora" nillable="true" type="xs:integer"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:element name="select_all_prestamo_operation">
@@ -227,7 +229,6 @@
             <xs:element name="update_prestamo_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="fecha_creada" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="nombre" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="apellido" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="email" nillable="true" type="xs:string"></xs:element>
@@ -268,10 +269,10 @@
                     <xs:sequence></xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="tipo_cambioCollection" type="ns0:tipo_cambioCollection"></xs:element>
+            <xs:element name="tipo_cambioCollection" type="ns1:tipo_cambioCollection"></xs:element>
             <xs:complexType name="tipo_cambioCollection">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="tipo_cambio" type="ns0:tipo_cambio"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="tipo_cambio" type="ns1:tipo_cambio"></xs:element>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="tipo_cambio">
@@ -286,6 +287,7 @@
                         <xs:element name="fecha" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="montoQ" nillable="true" type="xs:double"></xs:element>
                         <xs:element name="montoD" nillable="true" type="xs:double"></xs:element>
+                        <xs:element name="id_remesadora" nillable="true" type="xs:int"></xs:element>
                         <xs:element name="id_cuenta" nillable="true" type="xs:int"></xs:element>
                     </xs:sequence>
                 </xs:complexType>
@@ -307,7 +309,6 @@
             <xs:element name="insert_prestamo_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="fecha_creada" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="nombre" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="apellido" nillable="true" type="xs:string"></xs:element>
                         <xs:element name="email" nillable="true" type="xs:string"></xs:element>
@@ -323,6 +324,7 @@
                         <xs:element name="montoQ" nillable="true" type="xs:double"></xs:element>
                         <xs:element name="montoD" nillable="true" type="xs:double"></xs:element>
                         <xs:element name="id_prestamo" nillable="true" type="xs:int"></xs:element>
+                        <xs:element name="id_remesadora" nillable="true" type="xs:int"></xs:element>
                         <xs:element name="id_abono" nillable="true" type="xs:int"></xs:element>
                     </xs:sequence>
                 </xs:complexType>
@@ -330,255 +332,255 @@
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="update_remesas_efectivo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_remesas_efectivo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:update_remesas_efectivo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="insert_prestamo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_prestamo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:insert_prestamo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_cuenta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_cuenta_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_all_cuenta_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_cuenta_operationResponse">
-        <wsdl:part name="parameters" element="ns0:cuentaCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:cuentaCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="DataServiceFault">
         <wsdl:part name="parameters" element="ns0:DataServiceFault"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="insert_remesas_efectivo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_remesas_efectivo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:insert_remesas_efectivo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_transaccion_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_transaccion_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_all_transaccion_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_transaccion_operationResponse">
-        <wsdl:part name="parameters" element="ns0:transaccionCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:transaccionCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="insert_transaccion_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_transaccion_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:insert_transaccion_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_prestamo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_prestamo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_with_key_prestamo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_prestamo_operationResponse">
-        <wsdl:part name="parameters" element="ns0:prestamoCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:prestamoCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="delete_prestamo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_prestamo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:delete_prestamo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_abonos_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_abonos_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_with_key_abonos_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_abonos_operationResponse">
-        <wsdl:part name="parameters" element="ns0:abonosCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:abonosCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_remesas_efectivo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_remesas_efectivo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_all_remesas_efectivo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_remesas_efectivo_operationResponse">
-        <wsdl:part name="parameters" element="ns0:remesas_efectivoCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:remesas_efectivoCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="update_prestamo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_prestamo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:update_prestamo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="update_cuenta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_cuenta_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:update_cuenta_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="update_abonos_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_abonos_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:update_abonos_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="delete_cuenta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_cuenta_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:delete_cuenta_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="insert_abonos_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_abonos_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:insert_abonos_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_transaccion_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_transaccion_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_with_key_transaccion_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_transaccion_operationResponse">
-        <wsdl:part name="parameters" element="ns0:transaccionCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:transaccionCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="delete_abonos_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_abonos_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:delete_abonos_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_abonos_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_abonos_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_all_abonos_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_abonos_operationResponse">
-        <wsdl:part name="parameters" element="ns0:abonosCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:abonosCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_prestamo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_prestamo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_all_prestamo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_prestamo_operationResponse">
-        <wsdl:part name="parameters" element="ns0:prestamoCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:prestamoCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="delete_remesas_efectivo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_remesas_efectivo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:delete_remesas_efectivo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="insert_tipo_cambio_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_tipo_cambio_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:insert_tipo_cambio_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_tipo_cambio_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_tipo_cambio_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_all_tipo_cambio_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_all_tipo_cambio_operationResponse">
-        <wsdl:part name="parameters" element="ns0:tipo_cambioCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:tipo_cambioCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="update_transaccion_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_transaccion_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:update_transaccion_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_remesas_efectivo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_remesas_efectivo_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_with_key_remesas_efectivo_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_remesas_efectivo_operationResponse">
-        <wsdl:part name="parameters" element="ns0:remesas_efectivoCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:remesas_efectivoCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_cuenta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_cuenta_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:select_with_key_cuenta_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="select_with_key_cuenta_operationResponse">
-        <wsdl:part name="parameters" element="ns0:cuentaCollection"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:cuentaCollection"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="delete_transaccion_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_transaccion_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:delete_transaccion_operation"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="insert_cuenta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_cuenta_operation"></wsdl:part>
+        <wsdl:part name="parameters" element="ns1:insert_cuenta_operation"></wsdl:part>
     </wsdl:message>
-    <wsdl:portType name="wsg8bancoPortType">
+    <wsdl:portType name="Wsg8BancoPortType">
         <wsdl:operation name="update_remesas_efectivo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:update_remesas_efectivo_operationRequest" wsaw:Action="urn:update_remesas_efectivo_operation"></wsdl:input>
+            <wsdl:input message="ns1:update_remesas_efectivo_operationRequest" wsaw:Action="urn:update_remesas_efectivo_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="insert_prestamo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:insert_prestamo_operationRequest" wsaw:Action="urn:insert_prestamo_operation"></wsdl:input>
+            <wsdl:input message="ns1:insert_prestamo_operationRequest" wsaw:Action="urn:insert_prestamo_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_all_cuenta_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_all_cuenta_operationRequest" wsaw:Action="urn:select_all_cuenta_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_all_cuenta_operationResponse" wsaw:Action="urn:select_all_cuenta_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_cuenta_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_all_cuenta_operationRequest" wsaw:Action="urn:select_all_cuenta_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_all_cuenta_operationResponse" wsaw:Action="urn:select_all_cuenta_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_cuenta_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="insert_remesas_efectivo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:insert_remesas_efectivo_operationRequest" wsaw:Action="urn:insert_remesas_efectivo_operation"></wsdl:input>
+            <wsdl:input message="ns1:insert_remesas_efectivo_operationRequest" wsaw:Action="urn:insert_remesas_efectivo_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_all_transaccion_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_all_transaccion_operationRequest" wsaw:Action="urn:select_all_transaccion_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_all_transaccion_operationResponse" wsaw:Action="urn:select_all_transaccion_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_transaccion_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_all_transaccion_operationRequest" wsaw:Action="urn:select_all_transaccion_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_all_transaccion_operationResponse" wsaw:Action="urn:select_all_transaccion_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_transaccion_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="insert_transaccion_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:insert_transaccion_operationRequest" wsaw:Action="urn:insert_transaccion_operation"></wsdl:input>
+            <wsdl:input message="ns1:insert_transaccion_operationRequest" wsaw:Action="urn:insert_transaccion_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_prestamo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_with_key_prestamo_operationRequest" wsaw:Action="urn:select_with_key_prestamo_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_with_key_prestamo_operationResponse" wsaw:Action="urn:select_with_key_prestamo_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_prestamo_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_with_key_prestamo_operationRequest" wsaw:Action="urn:select_with_key_prestamo_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_with_key_prestamo_operationResponse" wsaw:Action="urn:select_with_key_prestamo_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_prestamo_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="delete_prestamo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:delete_prestamo_operationRequest" wsaw:Action="urn:delete_prestamo_operation"></wsdl:input>
+            <wsdl:input message="ns1:delete_prestamo_operationRequest" wsaw:Action="urn:delete_prestamo_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_abonos_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_with_key_abonos_operationRequest" wsaw:Action="urn:select_with_key_abonos_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_with_key_abonos_operationResponse" wsaw:Action="urn:select_with_key_abonos_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_abonos_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_with_key_abonos_operationRequest" wsaw:Action="urn:select_with_key_abonos_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_with_key_abonos_operationResponse" wsaw:Action="urn:select_with_key_abonos_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_abonos_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="select_all_remesas_efectivo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_all_remesas_efectivo_operationRequest" wsaw:Action="urn:select_all_remesas_efectivo_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_all_remesas_efectivo_operationResponse" wsaw:Action="urn:select_all_remesas_efectivo_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_remesas_efectivo_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_all_remesas_efectivo_operationRequest" wsaw:Action="urn:select_all_remesas_efectivo_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_all_remesas_efectivo_operationResponse" wsaw:Action="urn:select_all_remesas_efectivo_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_remesas_efectivo_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="update_prestamo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:update_prestamo_operationRequest" wsaw:Action="urn:update_prestamo_operation"></wsdl:input>
+            <wsdl:input message="ns1:update_prestamo_operationRequest" wsaw:Action="urn:update_prestamo_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="update_cuenta_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:update_cuenta_operationRequest" wsaw:Action="urn:update_cuenta_operation"></wsdl:input>
+            <wsdl:input message="ns1:update_cuenta_operationRequest" wsaw:Action="urn:update_cuenta_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="update_abonos_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:update_abonos_operationRequest" wsaw:Action="urn:update_abonos_operation"></wsdl:input>
+            <wsdl:input message="ns1:update_abonos_operationRequest" wsaw:Action="urn:update_abonos_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="delete_cuenta_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:delete_cuenta_operationRequest" wsaw:Action="urn:delete_cuenta_operation"></wsdl:input>
+            <wsdl:input message="ns1:delete_cuenta_operationRequest" wsaw:Action="urn:delete_cuenta_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="insert_abonos_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:insert_abonos_operationRequest" wsaw:Action="urn:insert_abonos_operation"></wsdl:input>
+            <wsdl:input message="ns1:insert_abonos_operationRequest" wsaw:Action="urn:insert_abonos_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_transaccion_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_with_key_transaccion_operationRequest" wsaw:Action="urn:select_with_key_transaccion_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_with_key_transaccion_operationResponse" wsaw:Action="urn:select_with_key_transaccion_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_transaccion_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_with_key_transaccion_operationRequest" wsaw:Action="urn:select_with_key_transaccion_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_with_key_transaccion_operationResponse" wsaw:Action="urn:select_with_key_transaccion_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_transaccion_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="delete_abonos_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:delete_abonos_operationRequest" wsaw:Action="urn:delete_abonos_operation"></wsdl:input>
+            <wsdl:input message="ns1:delete_abonos_operationRequest" wsaw:Action="urn:delete_abonos_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_all_abonos_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_all_abonos_operationRequest" wsaw:Action="urn:select_all_abonos_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_all_abonos_operationResponse" wsaw:Action="urn:select_all_abonos_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_abonos_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_all_abonos_operationRequest" wsaw:Action="urn:select_all_abonos_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_all_abonos_operationResponse" wsaw:Action="urn:select_all_abonos_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_abonos_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="select_all_prestamo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_all_prestamo_operationRequest" wsaw:Action="urn:select_all_prestamo_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_all_prestamo_operationResponse" wsaw:Action="urn:select_all_prestamo_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_prestamo_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_all_prestamo_operationRequest" wsaw:Action="urn:select_all_prestamo_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_all_prestamo_operationResponse" wsaw:Action="urn:select_all_prestamo_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_prestamo_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="delete_remesas_efectivo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:delete_remesas_efectivo_operationRequest" wsaw:Action="urn:delete_remesas_efectivo_operation"></wsdl:input>
+            <wsdl:input message="ns1:delete_remesas_efectivo_operationRequest" wsaw:Action="urn:delete_remesas_efectivo_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="insert_tipo_cambio_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:insert_tipo_cambio_operationRequest" wsaw:Action="urn:insert_tipo_cambio_operation"></wsdl:input>
+            <wsdl:input message="ns1:insert_tipo_cambio_operationRequest" wsaw:Action="urn:insert_tipo_cambio_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_all_tipo_cambio_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_all_tipo_cambio_operationRequest" wsaw:Action="urn:select_all_tipo_cambio_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_all_tipo_cambio_operationResponse" wsaw:Action="urn:select_all_tipo_cambio_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_tipo_cambio_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_all_tipo_cambio_operationRequest" wsaw:Action="urn:select_all_tipo_cambio_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_all_tipo_cambio_operationResponse" wsaw:Action="urn:select_all_tipo_cambio_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_tipo_cambio_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="update_transaccion_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:update_transaccion_operationRequest" wsaw:Action="urn:update_transaccion_operation"></wsdl:input>
+            <wsdl:input message="ns1:update_transaccion_operationRequest" wsaw:Action="urn:update_transaccion_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_remesas_efectivo_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_with_key_remesas_efectivo_operationRequest" wsaw:Action="urn:select_with_key_remesas_efectivo_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_with_key_remesas_efectivo_operationResponse" wsaw:Action="urn:select_with_key_remesas_efectivo_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_remesas_efectivo_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_with_key_remesas_efectivo_operationRequest" wsaw:Action="urn:select_with_key_remesas_efectivo_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_with_key_remesas_efectivo_operationResponse" wsaw:Action="urn:select_with_key_remesas_efectivo_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_remesas_efectivo_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_cuenta_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:select_with_key_cuenta_operationRequest" wsaw:Action="urn:select_with_key_cuenta_operation"></wsdl:input>
-            <wsdl:output message="ns0:select_with_key_cuenta_operationResponse" wsaw:Action="urn:select_with_key_cuenta_operationResponse"></wsdl:output>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_cuenta_operationDataServiceFault"></wsdl:fault>
+            <wsdl:input message="ns1:select_with_key_cuenta_operationRequest" wsaw:Action="urn:select_with_key_cuenta_operation"></wsdl:input>
+            <wsdl:output message="ns1:select_with_key_cuenta_operationResponse" wsaw:Action="urn:select_with_key_cuenta_operationResponse"></wsdl:output>
+            <wsdl:fault message="ns1:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_cuenta_operationDataServiceFault"></wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="delete_transaccion_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:delete_transaccion_operationRequest" wsaw:Action="urn:delete_transaccion_operation"></wsdl:input>
+            <wsdl:input message="ns1:delete_transaccion_operationRequest" wsaw:Action="urn:delete_transaccion_operation"></wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="insert_cuenta_operation">
             <wsdl:documentation></wsdl:documentation>
-            <wsdl:input message="ns0:insert_cuenta_operationRequest" wsaw:Action="urn:insert_cuenta_operation"></wsdl:input>
+            <wsdl:input message="ns1:insert_cuenta_operationRequest" wsaw:Action="urn:insert_cuenta_operation"></wsdl:input>
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="wsg8bancoSOAP11Binding" type="ns0:wsg8bancoPortType">
+    <wsdl:binding name="Wsg8BancoSOAP11Binding" type="ns1:Wsg8BancoPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
         <wsdl:operation name="update_remesas_efectivo_operation">
             <soap:operation soapAction="urn:update_remesas_efectivo_operation" style="document"></soap:operation>
@@ -809,7 +811,7 @@
             </wsdl:input>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:binding name="wsg8bancoSOAP12Binding" type="ns0:wsg8bancoPortType">
+    <wsdl:binding name="Wsg8BancoSOAP12Binding" type="ns1:Wsg8BancoPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap12:binding>
         <wsdl:operation name="update_remesas_efectivo_operation">
             <soap12:operation soapAction="urn:update_remesas_efectivo_operation" style="document"></soap12:operation>
@@ -1040,7 +1042,7 @@
             </wsdl:input>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:binding name="wsg8bancoHttpBinding" type="ns0:wsg8bancoPortType">
+    <wsdl:binding name="Wsg8BancoHttpBinding" type="ns1:Wsg8BancoPortType">
         <http:binding verb="POST"></http:binding>
         <wsdl:operation name="update_remesas_efectivo_operation">
             <http:operation location="update_remesas_efectivo_operation"></http:operation>
@@ -1238,24 +1240,24 @@
             </wsdl:input>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:service name="wsg8banco">
-        <wsdl:port name="SOAP11Endpoint" binding="ns0:wsg8bancoSOAP11Binding">
-            <soap:address location="http://192.168.1.71:9763/services/wsg8banco.SOAP11Endpoint/"></soap:address>
+    <wsdl:service name="Wsg8Banco">
+        <wsdl:port name="SOAP11Endpoint" binding="ns1:Wsg8BancoSOAP11Binding">
+            <soap:address location="http://192.168.56.1:9763/services/Wsg8Banco.SOAP11Endpoint/"></soap:address>
         </wsdl:port>
-        <wsdl:port name="SecureSOAP11Endpoint" binding="ns0:wsg8bancoSOAP11Binding">
-            <soap:address location="https://192.168.1.71:9443/services/wsg8banco.SecureSOAP11Endpoint/"></soap:address>
+        <wsdl:port name="SecureSOAP11Endpoint" binding="ns1:Wsg8BancoSOAP11Binding">
+            <soap:address location="https://192.168.56.1:9443/services/Wsg8Banco.SecureSOAP11Endpoint/"></soap:address>
         </wsdl:port>
-        <wsdl:port name="SecureSOAP12Endpoint" binding="ns0:wsg8bancoSOAP12Binding">
-            <soap12:address location="https://192.168.1.71:9443/services/wsg8banco.SecureSOAP12Endpoint/"></soap12:address>
+        <wsdl:port name="SecureSOAP12Endpoint" binding="ns1:Wsg8BancoSOAP12Binding">
+            <soap12:address location="https://192.168.56.1:9443/services/Wsg8Banco.SecureSOAP12Endpoint/"></soap12:address>
         </wsdl:port>
-        <wsdl:port name="SOAP12Endpoint" binding="ns0:wsg8bancoSOAP12Binding">
-            <soap12:address location="http://192.168.1.71:9763/services/wsg8banco.SOAP12Endpoint/"></soap12:address>
+        <wsdl:port name="SOAP12Endpoint" binding="ns1:Wsg8BancoSOAP12Binding">
+            <soap12:address location="http://192.168.56.1:9763/services/Wsg8Banco.SOAP12Endpoint/"></soap12:address>
         </wsdl:port>
-        <wsdl:port name="HTTPEndpoint" binding="ns0:wsg8bancoHttpBinding">
-            <http:address location="http://192.168.1.71:9763/services/wsg8banco.HTTPEndpoint/"></http:address>
+        <wsdl:port name="HTTPEndpoint" binding="ns1:Wsg8BancoHttpBinding">
+            <http:address location="http://192.168.56.1:9763/services/Wsg8Banco.HTTPEndpoint/"></http:address>
         </wsdl:port>
-        <wsdl:port name="SecureHTTPEndpoint" binding="ns0:wsg8bancoHttpBinding">
-            <http:address location="https://192.168.1.71:9443/services/wsg8banco.SecureHTTPEndpoint/"></http:address>
+        <wsdl:port name="SecureHTTPEndpoint" binding="ns1:Wsg8BancoHttpBinding">
+            <http:address location="https://192.168.56.1:9443/services/Wsg8Banco.SecureHTTPEndpoint/"></http:address>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

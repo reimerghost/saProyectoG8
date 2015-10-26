@@ -15,8 +15,8 @@ import java.sql.SQLException;
 public class test {
 
     public static void main(String[] argv) {
-        notificacionEmail ne = new notificacionEmail();
-        ne.enviarEmail(1, 100, 100);
+        notificacionEmail nemail = new notificacionEmail();
+            nemail.enviarEmail(1, 4, 15);
         
     }
 }

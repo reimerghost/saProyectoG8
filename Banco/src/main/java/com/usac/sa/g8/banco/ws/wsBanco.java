@@ -5,9 +5,15 @@
  */
 package com.usac.sa.g8.banco.ws;
 
+import com.usac.sa.g8.banco.*;
+import com.usac.sa.g8.banco.email.notificacionEmail;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import wsg8bancods.Transaccion;
+import wsg8bancods.Wsg8Banco;
+import wsg8bancods.Wsg8BancoPortType;
 
 /**
  *
@@ -35,8 +41,8 @@ public class wsBanco {
             @WebParam(name = "nombre_recibe") String nombre_recibe,
             @WebParam(name = "montoDolar") float montoDolar) {
         try { // Call Web Service Operation
-            org.wso2.ws.dataservice.Wsg8Banco service = new org.wso2.ws.dataservice.Wsg8Banco();
-            org.wso2.ws.dataservice.Wsg8BancoPortType port = service.getSOAP11Endpoint();
+            Wsg8Banco service = new Wsg8Banco();
+            Wsg8BancoPortType port = service.getSOAP11Endpoint();
             // TODO initialize WS operation arguments here
             java.lang.Integer idRemesa = no_remesa;
             java.lang.Integer idRemesadora = no_remesadora;
@@ -47,7 +53,8 @@ public class wsBanco {
             java.lang.String nombreReceptor = nombre_recibe;
             java.lang.Double montoQ = montoDolar * 7.75d;
             java.lang.Double montoD = montoDolar * 1.0d;
-            port.insertAbonosOperation(fecha, montoQ, montoD, no_prestamo);
+            port.insertAbonosOperation(fecha, montoQ, montoD, noPrestamo, idRemesadora);
+            
         } catch (Exception ex) {
             // TODO handle custom exceptions here
             return "false";
@@ -75,8 +82,8 @@ public class wsBanco {
             @WebParam(name = "nombre_recibe") String nombre_recibe,
             @WebParam(name = "montoDolar") float montoDolar) {
         try { // Call Web Service Operation
-            org.wso2.ws.dataservice.Wsg8Banco service = new org.wso2.ws.dataservice.Wsg8Banco();
-            org.wso2.ws.dataservice.Wsg8BancoPortType port = service.getSOAP11Endpoint();
+            Wsg8Banco service = new Wsg8Banco();
+            Wsg8BancoPortType port = service.getSOAP11Endpoint();
             // TODO initialize WS operation arguments here
             java.lang.Integer idRemesa = no_remesa;
             java.lang.Integer idRemesadora = no_remesadora;
@@ -87,7 +94,12 @@ public class wsBanco {
             java.lang.String nombreReceptor = nombre_recibe;
             java.lang.Double montoQ = montoDolar * 7.75d;
             java.lang.Double montoD = montoDolar * 1.0d;
-            port.insertAbonosOperation(fecha, montoQ, montoD, no_cuenta);
+
+            port.insertTransaccionOperation(fecha, montoQ, montoD, idRemesadora, noCuenta);
+            //TODO
+
+            notificacionEmail nemail = new notificacionEmail();
+//            nemail.enviarEmail(1, noCuenta, montoD);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
             return "false";
@@ -113,8 +125,8 @@ public class wsBanco {
             @WebParam(name = "montoDolar") float montoDolar) {
 
         try { // Call Web Service Operation
-            org.wso2.ws.dataservice.Wsg8Banco service = new org.wso2.ws.dataservice.Wsg8Banco();
-            org.wso2.ws.dataservice.Wsg8BancoPortType port = service.getSOAP11Endpoint();
+            Wsg8Banco service = new Wsg8Banco();
+            Wsg8BancoPortType port = service.getSOAP11Endpoint();
             // TODO initialize WS operation arguments here
             java.lang.Integer idRemesa = no_remesa;
             java.lang.Integer idRemesadora = no_remesadora;
@@ -133,4 +145,5 @@ public class wsBanco {
 
         return "true";
     }
+
 }

@@ -52,7 +52,7 @@ public class notificacionEmail {
         SendTo = email;
     }
 
-    public String establecerCuerpo(int tipo, String nombre, String apellido, int no_cuenta, int monto) {
+    public String establecerCuerpo(int tipo, String nombre, String apellido, int no_cuenta, double monto) {
         String body = "";
         switch (tipo) {
             case 1:
@@ -135,21 +135,21 @@ public class notificacionEmail {
         return datos;
     }
 
-    public void enviarEmail(int tipo, int no_cuenta, int monto) {
+    public void enviarEmail(int tipo, int no_cuenta, double monto) {
         //compose message  
         String[] datos;
-        datos = getDatosCliente(no_cuenta,tipo);
+//        datos = getDatosCliente(no_cuenta,tipo);
         try {
             // Mensaje MIME default.
             MimeMessage message = new MimeMessage(session);
             // EMISOR
             message.setFrom(new InternetAddress(EMAIL_EMISOR));//change accordingly 
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(datos[2]));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("rchamale10@gmail.com"));
             // Set Subject: header field
             message.setSubject(establecerAsunto(tipo));
             // Send the actual HTML message, as big as you like
-            message.setContent(establecerCuerpo(tipo, datos[0], datos[1], no_cuenta, monto), "text/html");
+            message.setContent(establecerCuerpo(tipo, "Sergio", "Narez", no_cuenta, monto), "text/html");
             // ENVIA EL CORREO
             Transport.send(message);
             System.out.println("Mensaje enviado!");

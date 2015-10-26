@@ -103,14 +103,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_9763/services/wsg8banco.wsdl</wsdlFile>
+                                <wsdlFile>localhost_9763/services/Wsg8Banco.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
-                            <wsdlLocation>http://localhost:9763/services/wsg8banco?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/wsg8banco.stale</staleFile>
-                            <target>2.0</target>
+                            <wsdlLocation>http://localhost:9763/services/Wsg8Banco?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/Wsg8Banco.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-wsg8banco</id>
+                        <id>wsimport-generate-Wsg8Banco</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
