@@ -54,7 +54,7 @@ public class wsBanco {
             java.lang.Double montoQ = montoDolar * 7.75d;
             java.lang.Double montoD = montoDolar * 1.0d;
             port.insertAbonosOperation(fecha, montoQ, montoD, noPrestamo, idRemesadora);
-            
+
         } catch (Exception ex) {
             // TODO handle custom exceptions here
             return "false";
