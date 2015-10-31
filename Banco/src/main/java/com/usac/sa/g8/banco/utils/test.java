@@ -6,7 +6,6 @@
 package com.usac.sa.g8.banco.utils;
 
 import com.usac.sa.g8.banco.email.notificacionEmail;
-import java.sql.SQLException;
 
 /**
  *
@@ -15,8 +14,6 @@ import java.sql.SQLException;
 public class test {
 
     public static void main(String[] argv) {
-        notificacionEmail nemail = new notificacionEmail();
-            nemail.enviarEmail(1, 4, 15);
-        
+                
     }
 }

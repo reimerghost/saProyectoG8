@@ -87,27 +87,27 @@ public class notificacionEmail {
         return null;
     }
 
-    private String[] getDatosCliente(int id_cta,int tipo) {
+    private String[] getDatosCliente(int id,int tipo) {
         String tabla = "";
+        String selectLogin = "";
         String[] datos = {"nombre", "apellidos", "rchamale10@gmail.com"};
         Connection dbConnection = null;
         PreparedStatement preparedStatement = null;
         boolean r = false;
         if(tipo==1){
-            tabla = "cuenta";
+            selectLogin = "select nombre, apellido, email from cuenta c where id_cuenta = ?";
         }
         if(tipo==2){
-            tabla = "prestamo";            
+            selectLogin = "select nombre, apellido, email from prestamo p where id_prestamo = ?";
         }
         
-        String selectLogin = "select nombre, apellido, email from "+tabla+" c where id_cuenta = ?";
+        
 
         try {
             dbConnection = bddConnection.getDBConnection();
             preparedStatement = dbConnection.prepareStatement(selectLogin);
-            //preparedStatement = dbConnection.prepareStatement(updateTableSQL);
 
-            preparedStatement.setInt(1, id_cta);
+            preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -138,18 +138,18 @@ public class notificacionEmail {
     public void enviarEmail(int tipo, int no_cuenta, double monto) {
         //compose message  
         String[] datos;
-//        datos = getDatosCliente(no_cuenta,tipo);
+        datos = getDatosCliente(no_cuenta,tipo);
         try {
             // Mensaje MIME default.
             MimeMessage message = new MimeMessage(session);
             // EMISOR
             message.setFrom(new InternetAddress(EMAIL_EMISOR));//change accordingly 
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("rchamale10@gmail.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(datos[2]));
             // Set Subject: header field
             message.setSubject(establecerAsunto(tipo));
             // Send the actual HTML message, as big as you like
-            message.setContent(establecerCuerpo(tipo, "Sergio", "Narez", no_cuenta, monto), "text/html");
+            message.setContent(establecerCuerpo(tipo, datos[0], datos[1], no_cuenta, monto), "text/html");
             // ENVIA EL CORREO
             Transport.send(message);
             System.out.println("Mensaje enviado!");

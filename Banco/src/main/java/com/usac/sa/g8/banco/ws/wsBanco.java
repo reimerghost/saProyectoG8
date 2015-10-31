@@ -55,6 +55,8 @@ public class wsBanco {
             java.lang.Double montoD = montoDolar * 1.0d;
             port.insertAbonosOperation(fecha, montoQ, montoD, noPrestamo, idRemesadora);
 
+            notificacionEmail nemail = new notificacionEmail();
+            nemail.enviarEmail(2, noPrestamo, montoQ);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
             return "false";
@@ -99,7 +101,7 @@ public class wsBanco {
             //TODO
 
             notificacionEmail nemail = new notificacionEmail();
-//            nemail.enviarEmail(1, noCuenta, montoD);
+            nemail.enviarEmail(2, noCuenta, montoQ);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
             return "false";
