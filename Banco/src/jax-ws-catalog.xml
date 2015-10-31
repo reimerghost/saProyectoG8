@@ -2,4 +2,5 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:9763/services/wsg8banco?wsdl" uri="wsdl/localhost_9763/services/wsg8banco.wsdl"/>
     <system systemId="http://localhost:9763/services/Wsg8Banco?wsdl" uri="wsdl/localhost_9763/services/Wsg8Banco.wsdl"/>
+    <system systemId="http://192.168.56.1:9763/services/Wsg8Banco?wsdl" uri="wsdl/192.168.56.1_9763/services/Wsg8Banco.wsdl"/>
 </catalog>

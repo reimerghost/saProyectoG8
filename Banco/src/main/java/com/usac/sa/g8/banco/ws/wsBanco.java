@@ -5,7 +5,6 @@
  */
 package com.usac.sa.g8.banco.ws;
 
-import com.usac.sa.g8.banco.*;
 import com.usac.sa.g8.banco.email.notificacionEmail;
 import java.util.List;
 import javax.jws.WebService;
@@ -53,7 +52,7 @@ public class wsBanco {
             java.lang.String nombreReceptor = nombre_recibe;
             java.lang.Double montoQ = montoDolar * 7.75d;
             java.lang.Double montoD = montoDolar * 1.0d;
-            port.insertAbonosOperation(fecha, montoQ, montoD, noPrestamo, idRemesadora);
+            port.insertAbonosOperation(fecha, montoQ, montoD, noPrestamo, idRemesadora, idRemesa, nombreEmisor, nombreReceptor);
 
             notificacionEmail nemail = new notificacionEmail();
             nemail.enviarEmail(2, noPrestamo, montoQ);
@@ -97,7 +96,7 @@ public class wsBanco {
             java.lang.Double montoQ = montoDolar * 7.75d;
             java.lang.Double montoD = montoDolar * 1.0d;
 
-            port.insertTransaccionOperation(fecha, montoQ, montoD, idRemesadora, noCuenta);
+            port.insertTransaccionOperation(fecha, montoQ, montoD, noCuenta, idRemesadora, idRemesa, nombreEmisor, nombreReceptor);
             //TODO
 
             notificacionEmail nemail = new notificacionEmail();
@@ -146,6 +145,23 @@ public class wsBanco {
         }
 
         return "true";
+    }
+    
+    @WebMethod(operationName = "getEstadoCuenta")
+    public List<Transaccion> getEstadoCuenta(
+            @WebParam(name = "id_cuenta") int id_cuenta) {
+
+        try { // Call Web Service Operation
+            Wsg8Banco service = new Wsg8Banco();
+            Wsg8BancoPortType port = service.getSOAP11Endpoint();
+            //...
+            java.lang.String estado = "";
+           return port.selectWithKeyTransaccionOperation(id_cuenta);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+            return null;
+        }
+
     }
 
 }

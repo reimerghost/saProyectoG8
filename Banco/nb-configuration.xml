@@ -17,7 +17,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>gfv3ee6</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
         <org-netbeans-modules-maven-jaxws.generate_5f_nonjsr109>true</org-netbeans-modules-maven-jaxws.generate_5f_nonjsr109>
         <org-netbeans-modules-maven-jaxws._5f_C_5f_wsg8banco>http://localhost:9763/services/wsg8banco?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_wsg8banco>
-        <org-netbeans-modules-maven-jaxws._5f_C_5f_Wsg8Banco>http://localhost:9763/services/Wsg8Banco?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_Wsg8Banco>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_Wsg8Banco>http://192.168.56.1:9763/services/Wsg8Banco?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_Wsg8Banco>
         <org-netbeans-modules-css-prep.sass_2e_compiler_2e_options/>
         <org-netbeans-modules-css-prep.less_2e_mappings>/less:/css</org-netbeans-modules-css-prep.less_2e_mappings>
         <org-netbeans-modules-css-prep.less_2e_enabled>false</org-netbeans-modules-css-prep.less_2e_enabled>

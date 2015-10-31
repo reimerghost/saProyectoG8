@@ -109,10 +109,10 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_9763/services/Wsg8Banco.wsdl</wsdlFile>
+                                <wsdlFile>192.168.56.1_9763/services/Wsg8Banco.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
-                            <wsdlLocation>http://localhost:9763/services/Wsg8Banco?wsdl</wsdlLocation>
+                            <wsdlLocation>http://192.168.56.1:9763/services/Wsg8Banco?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/Wsg8Banco.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-Wsg8Banco</id>
